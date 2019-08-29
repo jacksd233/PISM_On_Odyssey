@@ -1,0 +1,1 @@
+sbatch -c 8 -p huce_intel -t 100 --mem=20000 --wrap='make; make install -j 8'
