@@ -1,0 +1,5 @@
+conda create -n PISM_python_packages python=2.7.14  
+source activat PISM_python_packages
+conda install numpy
+conda install scipy
+conda install netcdf4
