@@ -6,4 +6,5 @@ SHOW JOBs:
   
 SUBMIT JOBs:
   sbatch <--test-only> -N <max numbers> --contiguous <bash_script.sh>
-  ## Use contiguous cores will greatly increase efficiency.
+  ## Use contiguous cores will greatly improve efficiency.
+
