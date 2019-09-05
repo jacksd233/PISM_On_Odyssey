@@ -8,3 +8,6 @@ SUBMIT JOBs:
   sbatch <--test-only> -N <max numbers> --contiguous <bash_script.sh>
   ## Use contiguous cores will greatly improve efficiency.
 
+SHOW NODES:
+  use "~pchan/bin/lsload.pl huce_intel"
+  to show current 'node-level' status of non-full nodes in huce partitions
