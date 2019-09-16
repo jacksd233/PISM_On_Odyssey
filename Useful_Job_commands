@@ -7,6 +7,8 @@ SHOW JOBs:
 SUBMIT JOBs:
   sbatch <--test-only> -N <max numbers> --contiguous <bash_script.sh>
   ## Use contiguous cores will greatly improve efficiency.
+  ## N=30 for 900 cores 5km
+  ## N=12 for 360 cores 10km
 
 SHOW NODES:
   use "~pchan/bin/lsload.pl huce_intel"
