@@ -4,6 +4,9 @@ sbatch -c 8 -p huce_intel -t 100 --mem=20000 --wrap='make; make install -j 8'
 SHOW JOBs:
   sacct -P -S <START_TIME .e.g 0808>
   
+Interactive Jobs:
+  srun -p test --pty -n 4 -N 1 --mem 20000 -t 0-06:00 /bin/bash
+  
 SUBMIT JOBs:
   sbatch <--test-only> -N <max numbers> --contiguous <bash_script.sh>
   ## Use contiguous cores will greatly improve efficiency.
