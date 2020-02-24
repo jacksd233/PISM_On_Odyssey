@@ -7,6 +7,9 @@ SHOW JOBs:
 Interactive Jobs:
   srun -p test --pty -n 4 -N 1 --mem 20000 -t 0-06:00 /bin/bash
   
+  salloc -p huce_intel -n 1 -t 0-12:00 --mem=30000
+  ssh -Y $SLURM_JOB_NODELIST
+  
 SUBMIT JOBs:
   sbatch <--test-only> -N <max numbers> --contiguous <bash_script.sh>
   ## Use contiguous cores will greatly improve efficiency.
