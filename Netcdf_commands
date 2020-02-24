@@ -1,4 +1,4 @@
 SPLIT LONG NC FILES:
-    ncks -d time,0(start time),10(end time) input.nc output.nc
+    split by time dimension: ncks -d time,0(start time),10(end time) input.nc output.nc
     
     
