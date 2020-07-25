@@ -1,0 +1,2 @@
+convert pngs to mp4:
+'ffmpeg -r 20 -f image2 -start_number 1500 -i animate_%d.png -f mp4 -q:v 0 -vcodec mpeg4 -r 20 animations.mp4'
