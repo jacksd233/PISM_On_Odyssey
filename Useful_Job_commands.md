@@ -21,4 +21,4 @@ SHOW NODES:
   to show current 'node-level' status of non-full nodes in huce partitions
   
 RENAME on Macbook Terminal:
-  use rename "s/flow_/flow_0/" flow_[0_9]*.pdf
+  use 'rename "s/flow_/flow_0/" flow_[0_9]*.pdf'
