@@ -7,7 +7,7 @@ Extract Variables:
     If out.nc does not exist it will be created. Otherwise the you will be prompted whether to append to or to overwrite out.nc:
 
     ncks -v time,pressure in.nc out.nc
-    ncks -C -v time,pressure in.nc out.nc
+    ncks -C -v time,pressure in.nc out.nc (use this one)
     
 The first version of the command creates an out.nc which contains time, pressure, and any coordinate variables associated with pressure. 
 The out.nc from the second version is guaranteed to contain only two variables time and pressure.
