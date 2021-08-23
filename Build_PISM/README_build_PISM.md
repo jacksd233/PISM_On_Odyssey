@@ -1,5 +1,5 @@
 ## This file tells how to build prerequisites and pism on Odyssey
-``` Last Modified by Weiwen Ji on Aug.30 2019 weiwen_ji@fas.harvard.edu```
+``` Last Modified by Weiwen Ji on Aug.30 2019 wwji@pku.edu.cn```
 
 ###   ===============   Load Prerequisities   ===============
 
