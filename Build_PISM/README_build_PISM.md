@@ -80,7 +80,7 @@
    mkdir ~/pism-stable/build
    cd ~/pism-stable/build
    
-   7/3/2019
+
    Add "if (POLICY CMP0074)
           cmake_policy(SET CMP0074 NEW) # CMake 3.12
         endif ()"
@@ -90,7 +90,7 @@
    PISM_INSTALL_PREFIX=~/pism CC=mpiicc CXX=mpiicpc cmake .. -DPETSC_EXECUTABLE_RUNS=ON
    # May have some failed tests
 
-Apr.29 
+
    # Turn on Proj4
    make edit_cache
    Turn on 'Pism_USE_PROJ4' Press "c" "c" "g"
