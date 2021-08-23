@@ -1,6 +1,7 @@
-# bash_scripts for submissing jobs
 
-'''
+## bash_scripts for submissing jobs (For Odyssey)
+
+```
 #!/bin/bash
 ### Job Name
 #SBATCH --job-name=LIS_Run_A13_20km_190c_intel_T5Less_SMB700_top100_ELAgradual_from700to500m_in100kyr_bht0.01_100000to200000y
@@ -59,4 +60,63 @@ mpiexec -n $SLURM_NTASKS ./pismr -i $InputFile  \
 
 
 
-'''
+```
+
+## bash_scripts for Cheyenne
+```
+#!/bin/bash
+### Job Name
+#PBS -N LIS_Run_A1_20km_216c_T5Less_SMBmax700_top150_slippery_bht0.01_100000y
+#PBS -A UHAR0013
+#PBS -l walltime=12:00:00
+#PBS -q regular
+### Merge output and error files
+#PBS -j oe
+### Select  nodes with 36 CPUs each for a total of 360 MPI processes
+#PBS -l select=6:ncpus=36:mpiprocs=36
+### Send email on abort, begin and end
+#PBS -m abe
+### Specify mail recipient
+#PBS -M wwji@pku.edu.cn
+
+
+
+### Run the executable
+
+
+InputFile=`ls -vr snapshots_*.000.nc | head -n1`
+StartTime=`sed 's/snapshots_\(.*\)\.000\.nc/\1/' <<< "$InputFile"`
+
+if [ -z "$InputFile" ] ; then
+
+ InputFile=CS_proj4_Gowan_T_5less_bht0.01_phi10to30_ts0_dx20000.nc
+ StartTime=0
+
+fi
+
+OutName="LIS_20km.nc"
+ModelTime=100000
+SaveFileName=Snapshots
+
+
+mpiexec -n 216 ./pismr -i $InputFile  -bootstrap\
+                   -log_summary -options_left \
+                   -Mx 451 -My 351 -Mz 101 -Mbz 11 -z_spacing equal -Lz 8000 -Lbz 4600 \
+                   -sia_e 3.0 -stress_balance ssa+sia -yield_stress mohr_coulomb \
+                   -tauc_slippery_grounding_lines \
+                   -hydrology_tillwat_max 2 -hydrology routing \
+                   -surface elevation,anomaly -climatic_mass_balance -4,0.777777777778,0,700,1000 -ice_surface_temp 0,-78.4,0,8000  \
+                   -surface_anomaly_file $InputFile   \
+                   -skip -skip_max 10 \
+                   -ys $StartTime -ye $ModelTime\
+                   -bed_def lc \
+                   -calving thickness_calving \
+                   -thickness_calving_threshold 300 \
+                   -ts_file ts_${StartTime}yto${ModelTime}y_$OutName -ts_times $StartTime:1:$ModelTime \
+                   -extra_file ex_${StartTime}yto${ModelTime}y_$OutName -extra_times $StartTime:100:$ModelTime \
+                   -extra_vars temppabase,tempicethk_basal,bmelt,tillwat,velsurf_mag,mask,thk,topg,usurf,hardav,velbase_mag,tauc,climatic_mass_balance,ice_surface_temp,taud_mag,taub_mag,bwat,tendency_of_ice_amount_due_to_discharge,tendency_of_ice_mass_due_to_flow,tendency_of_ice_mass_due_to_discharge \
+                   -save_file snapshots -save_times 50000,60000,70000,80000,90000,95000 -save_split -save_size big \
+                   -o PISM_Out_20km_100000y_Gowan_SSTa5Less_slippery_SMBmax700_top150_Lapse9.8_bht0.01.nc -o_size big
+
+
+```
