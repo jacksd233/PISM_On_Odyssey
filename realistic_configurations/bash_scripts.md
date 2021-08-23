@@ -16,7 +16,7 @@
 ### Send email on abort, begin and end
 #SBATCH --mail-type=ALL
 ### Specify mail recipient
-#SBATCH --mail-user=wwji@pku.edu.cn
+#SBATCH --mail-user=(email_address delete bracket) 
 
 
 
@@ -67,7 +67,7 @@ mpiexec -n $SLURM_NTASKS ./pismr -i $InputFile  \
 #!/bin/bash
 ### Job Name
 #PBS -N LIS_Run_A1_20km_216c_T5Less_SMBmax700_top150_slippery_bht0.01_100000y
-#PBS -A UHAR0013
+#PBS -A UHARXXXX (job ID)
 #PBS -l walltime=12:00:00
 #PBS -q regular
 ### Merge output and error files
@@ -77,7 +77,7 @@ mpiexec -n $SLURM_NTASKS ./pismr -i $InputFile  \
 ### Send email on abort, begin and end
 #PBS -m abe
 ### Specify mail recipient
-#PBS -M wwji@pku.edu.cn
+#PBS -M (email_address delete bracket)
 
 
 
